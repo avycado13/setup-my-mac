@@ -1,0 +1,25 @@
+# Homebrew stuff
+homebrew_installed_packages:
+  - git
+  - wget
+  - python
+homebrew_taps: []
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+# Mac App Store
+mas_installed_apps:
+- {id: 1278508951, name: Trello}
+mas_signin_dialog: true
+# Other package managers
+nix_packages:
+  - hello
+  - htop
+
+pip_packages:
+  - numpy
+  - pandas
+  - requests
+
+install_scripts:
+  - /path/to/custom/install_script.sh

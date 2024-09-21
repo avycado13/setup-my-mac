@@ -1,0 +1,16 @@
+# Install Nix if not installed
+- name: Check if Nix is installed
+  stat:
+    path: /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+  register: nix_installed
+
+- name: Install Nix
+  shell: |
+    curl -L https://nixos.org/nix/install | sh
+  when: not nix_installed.stat.exists
+
+# Install Nix packages
+- name: Install Nix packages
+  shell: nix-env -iA nixpkgs."{{ item }}"
+  loop: "{{ nix_packages }}"
+  when: nix_installed.stat.exists
